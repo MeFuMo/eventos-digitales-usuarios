@@ -1,3 +1,4 @@
+<?php
 // la URL que contendrá la acción es la propia página que contiene el formulario
 $action_slug = $wp_query->query_vars['name'];
 // un error genérico para campos vacíos
@@ -83,7 +84,7 @@ if ( isset($_POST['signup-submit']) ) {
 
 // aquí el formulario en sí, en todo su esplendor geométrico
 $signup_form = '
-<form id="signup" action="' .$action_slug. '" method="post" name="signup">
+<form id="signup" action="' .$action_slug. '" method="post" name="signup" enctype="multipart/form-data">
 <fieldset class="required' .$form_username_class. '"><span class="req">*</span>
  <input id="signup-username" type="text" name="signup-username" value="' .$name_val. '" />
  <label>Username</label>
