@@ -1,8 +1,7 @@
 <?php
-/**
-* Plantilla para registro de profesionales
-*
-**/
+/*
+* Template Name: Registro Profesionales
+*/
 
 // cosas de WP, para hacer posible la edición antes del formulario
 
@@ -112,16 +111,13 @@ if ( isset($_POST['signup-submit']) ) {
     $profile_val = $_POST['signup-profile'];
     $prointerests_val = $_POST['signup-prointerests'];
 
-}
-
 // aquí el formulario en sí, en todo su esplendor geométrico
 $signup_form = '
-<form id="signup" action="' . $action_slug . '" method="post" name="signup" enctype="multipart/form-data">
+<form id="signup" action="" method="post" name="signup" enctype="multipart/form-data">
 <fieldset class="required' . $form_mail_class . '"><span class="req">*</span>
  <input id="signup-mail" type="text" name="signup-mail" value="' . $mail_val . '" />
- <label>E-mail</label>
- <div class="mini-faq"><strong>' . array_key_exists('mail', $errors) ? echo $errors['mail'] : '' . '</strong>.</div></fieldset>
-</fieldset>
+ <label>Dirección de correo</label>
+ </fieldset>
 <fieldset><input id="signup-pass" type="password" name="signup-pass" value="" />
  <label>Contraseña</label>
 <div class="mini-faq">Combine letras minúsculas, mayúsculas, números y signos para crear una contraseña segura.</div></fieldset>
@@ -171,11 +167,7 @@ $signup_form = '
 <fieldset><input id="signup-interests" type="text" name="signup-interests" value="'  . $interests_val . '" />
   <label>Sectores de interés</label></fieldset>
 <fieldset><input id="signup-interests2" type="text" name="signup-interests2" value="'  . $interests2_val . '" />
-  <label>Otros intereses</label></fieldset>';
-
-// Aqui empieza el catálogo de profesionales
-
-$signup_form .= '
+  <label>Otros intereses</label></fieldset>
 <fieldset><textarea id="signup-profile" name="signup-profile" rows="10" cols="45">' . $profile_val . '</textarea>
  <label>Breve descripción de su perfil profesional</label></fieldset>
 <fieldset><textarea id="signup-prointerests" name="signup-prointerests" rows="10" cols="45">' . $prointerests_val . '</textarea>
@@ -202,9 +194,11 @@ $signup_form .= '
 <fieldset class="required' . $form_human_class . '"><input id="signup-human" type="text" name="signup-human" value="' .$human_val. '" />
  <label>¿cuatro más nueve?</label>
 <div class="mini-faq">' . $errors['human'] . '<strong>Esto vendría a ser un captcha</strong></div></fieldset>
-<fieldset><input id="sigup-ref" type="hidden" name="signup-ref" value="' .$ref. '" />
+<fieldset><input id="sigup-ref" type="hidden" name="signup-ref" value="' . $ref . '" />
  <input id="signup-submit" type="submit" name="signup-submit" value="Registrarse como profesional" /></fieldset>
 </form>
 <!-- #signup -->';
 
-get_footer(); 
+echo $signup_form;
+
+get_footer();
